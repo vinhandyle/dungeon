@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Enemy : MonoBehaviour
+public abstract class Enemy : Entity
 {   
     [Header("Generic Enemy Info")]
     [SerializeField] protected SpriteRenderer sprite = null;

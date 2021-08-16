@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 /// <summary>
 /// Base class for all projectiles.
@@ -6,13 +7,16 @@
 public abstract class Projectile : MonoBehaviour
 {
     [Header("Generic Projectile Info")]
-    [SerializeField] protected float speed = 0;
     [SerializeField] protected int damage = 0;
+    [SerializeField] protected float speed = 0;
+
+    [SerializeField] protected float knockbackAmount = 0;
+    [SerializeField] protected float knockbackDuration = 0;
+    [SerializeField] protected int knockbackType = 0;
+
     [SerializeField] protected bool destroyOnHit = false;
 
-    protected PlayerHealth player = null;
-
-    protected const string playerTag = "Player";
+    protected event Action OnHit = null;
 
     /// <summary>
     /// Performs any setup needed when the projectile is created.
@@ -30,6 +34,7 @@ public abstract class Projectile : MonoBehaviour
         if (destroyOnHit)
         {
             Destroy(gameObject);
+            OnHit?.Invoke();
         }
     }
 }

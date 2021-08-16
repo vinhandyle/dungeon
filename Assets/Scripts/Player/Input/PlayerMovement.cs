@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool crawlInputted = false;
 
     [HideInInspector] public bool facingLeft = true;
-    [HideInInspector] public bool canMoveLeft = true;
+     public bool canMoveLeft = true;
     [HideInInspector] public bool canMoveRight = true;
 
     public bool climbing = false;
@@ -66,15 +66,12 @@ public class PlayerMovement : MonoBehaviour
     }
 
     /// <summary>
-    /// Sets the player's horizontal direction based on relevant input interactions.
+    /// Sets the player's direction based on relevant input interactions.
     /// </summary>
     /// <param name="context">The input being read from the button interaction.</param>
     public void Move(InputAction.CallbackContext context)
     {
-        if (context.started)
-        {
-            moveDirection = context.ReadValue<Vector2>();
-        }
+        moveDirection = context.ReadValue<Vector2>();
 
         if (context.canceled)
         {
@@ -106,9 +103,32 @@ public class PlayerMovement : MonoBehaviour
         }
 
         sprite.flipX = facingLeft;
-        rb.velocity = new Vector2(
+
+        if (!GetComponent<Player>().stunned)
+        {
+            rb.velocity = new Vector2(
             xDir * walkSpeed / (_crawling ? crawlReduction : 1),
             rb.velocity.y);
+        }       
+    }
+
+    /// <summary>
+    /// Sets the player's vertical velocity based on their vertical direction.
+    /// </summary>
+    private void Climb()
+    {
+        int yDir = 0;
+
+        if (moveDirection.y < 0)
+        {
+            yDir = -1;
+        }
+        else if (moveDirection.y > 0)
+        {
+            yDir = 1;
+        }
+
+        rb.velocity = new Vector2(0, yDir * climbingSpeed);
     }
 
     /// <summary>
@@ -214,42 +234,12 @@ public class PlayerMovement : MonoBehaviour
     }
 
     /// <summary>
-    /// Sets the player's vertical direction based on relevant input interactions.
+    /// Resets the player's direction of movement and their xy-velocity.
     /// </summary>
-    /// <param name="context">The input being read from the button interaction.</param>
-    public void Climb(InputAction.CallbackContext context)
+    public void ResetMoveDirection()
     {
-        if (climbing)
-        {
-            if (context.started)
-            {
-                moveDirection = context.ReadValue<Vector2>();
-            }
-
-            if (context.canceled)
-            {
-                moveDirection = Vector2.zero;
-            }
-        }
-    }
-
-    /// <summary>
-    /// Sets the player's vertical velocity based on their vertical direction.
-    /// </summary>
-    private void Climb()
-    {
-        int yDir = 0;
-
-        if (moveDirection.y < 0)
-        {
-            yDir = -1;
-        }
-        else if (moveDirection.y > 0)
-        {
-            yDir = 1;
-        }
-
-        rb.velocity = new Vector2(0, yDir * climbingSpeed);        
+        moveDirection = Vector2.zero;
+        rb.velocity = Vector2.zero;
     }
 
     /// <summary>
@@ -262,11 +252,18 @@ public class PlayerMovement : MonoBehaviour
     }
 
     /// <summary>
-    /// Resets the player's direction of movement.
+    /// Sets the player into climbing or standing mode based on the given bool.
     /// </summary>
-    public void ResetMoveDirection()
+    /// <param name="isClimbing">Whether the player should be climbing right now.</param>
+    public void SetClimbing(bool isClimbing)
     {
-        moveDirection = Vector2.zero;
+        SetCrawling(false);
+
+        climbing = isClimbing;
+        climbingForm.SetActive(isClimbing);
+        standingForm.SetActive(!isClimbing);
+
+        sprite = gameObject.GetComponentInChildren<SpriteRenderer>();
     }
 
     /// <summary>
@@ -282,20 +279,6 @@ public class PlayerMovement : MonoBehaviour
 
         sprite = gameObject.GetComponentInChildren<SpriteRenderer>();
     }
-
-    /// <summary>
-    /// Sets the player into climbing or standing mode based on the given bool.
-    /// </summary>
-    /// <param name="isClimbing">Whether the player should be climbing right now.</param>
-    public void SetClimbing(bool isClimbing)
-    {
-        SetCrawling(false);
-
-        climbingForm.SetActive(isClimbing);
-        standingForm.SetActive(!isClimbing);
-
-        sprite = gameObject.GetComponentInChildren<SpriteRenderer>();
-    }  
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

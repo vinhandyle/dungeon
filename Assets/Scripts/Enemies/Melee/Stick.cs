@@ -1,17 +1,34 @@
 ﻿using UnityEngine;
 
-public class Stick : Melee
+/// <summary>
+/// Test enemy melee attack.
+/// </summary>
+public class Stick : EnemyMelee
 {
     [HideInInspector] public float swingSpeed = 0;
     [HideInInspector] public bool swingingForward = false;
 
     private const int quarterCircle = 45;
 
+    protected override void Awake()
+    {
+        base.Awake();
+
+        OnHitPlayer += (Collider2D collision) =>
+        {
+            playerHealth.TakeDamage(damage);
+            player.Knockback(knockbackAmount, knockbackDuration, knockbackType, gameObject);
+        };
+    }
+
     private void Update()
     {
         Swing();
     }
 
+    /// <summary>
+    /// Rotates the stick.
+    /// </summary>
     public void Swing()
     {
         if (swingingForward)
@@ -22,10 +39,6 @@ public class Stick : Melee
 
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag(playerTag))
-        {
-            player = collision.gameObject.GetComponentInParent<PlayerHealth>();
-            player.TakeDamage(damage);
-        }
+        HitPlayer(collision);
     }
 }

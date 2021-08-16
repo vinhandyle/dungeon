@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 /// <summary>
 /// Represents any object that the player can use the Interact action on.
 /// </summary>
-public class Interactable : MonoBehaviour
+public abstract class Interactable : MonoBehaviour
 {
     protected Player player = null;
     protected bool playerInRange = false;

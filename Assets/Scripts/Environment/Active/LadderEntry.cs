@@ -30,10 +30,9 @@ public class LadderEntry : Interactable
 
         if (!pMovement.climbing)
         {
-            player.transform.position = new Vector3(entryPos.x, entryPos.y, player.transform.position.z);
-            pMovement.climbing = true;
-            pMovement.SetClimbing(true);
             pMovement.ResetMoveDirection();
+            pMovement.SetClimbing(true);
+            player.transform.position = new Vector3(entryPos.x, entryPos.y, player.transform.position.z);           
         }       
     }
 }

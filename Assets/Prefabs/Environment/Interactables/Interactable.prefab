@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8702489037862767181}
-  - component: {fileID: 8702489037862767183}
   - component: {fileID: 8702489037862767180}
   - component: {fileID: 1002538394051582841}
   m_Layer: 0
@@ -33,18 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8702489037862767183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8702489037862767186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 982e5e80a09dfa6459e6249d2ea160fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8702489037862767180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,7 +87,7 @@ MonoBehaviour:
     m_ActionName: Environment/Interact[/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Environment
+  m_DefaultActionMap: 15b3f33a-0731-45b0-b34b-b0e447c33bc8
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!61 &1002538394051582841

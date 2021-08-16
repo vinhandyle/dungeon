@@ -43,26 +43,23 @@ public class @InputManager : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Climb"",
-                    ""type"": ""Value"",
-                    ""id"": ""4b6843fb-b728-4c3e-81da-4dd83ba88b49"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""name"": ""Use Tool"",
+                    ""type"": ""Button"",
+                    ""id"": ""9c5dace9-78f4-45e2-967b-f3de0acadf6d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Cycle Tool"",
+                    ""type"": ""Button"",
+                    ""id"": ""f6823da0-6d24-4a8b-b105-8a001c49cf4e"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""978bfe49-cc26-4a3d-ab7b-7d7a29327403"",
-                    ""path"": ""<Gamepad>/leftStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": ""WASD"",
                     ""id"": ""71434b7a-cec9-43a4-82c1-179cd72d27f5"",
@@ -75,8 +72,19 @@ public class @InputManager : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""left"",
+                    ""name"": ""up"",
                     ""id"": ""388d348d-b37a-48a0-a81a-5d34aadc311e"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""372a8601-a3ca-44b2-8392-3108097d5cdd"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -86,8 +94,19 @@ public class @InputManager : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""down"",
+                    ""id"": ""10f64de4-9f21-4f99-8b5e-1808a9becd78"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": ""right"",
-                    ""id"": ""372a8601-a3ca-44b2-8392-3108097d5cdd"",
+                    ""id"": ""0891a929-a479-4350-9a39-1faab7473c4c"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -97,37 +116,15 @@ public class @InputManager : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""Keypad"",
-                    ""id"": ""c82d11a1-40c1-4b4a-95e9-85aa6c1c044c"",
-                    ""path"": ""Dpad"",
+                    ""name"": """",
+                    ""id"": ""2ae7de64-c257-4bb2-887e-0608f07cf71c"",
+                    ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Move"",
-                    ""isComposite"": true,
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""355a8774-1f59-4e2c-b905-1a7c05548115"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""997a2dee-5d05-4c8e-ac92-ce06ec8cea6c"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
@@ -136,6 +133,17 @@ public class @InputManager : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bafd525f-f651-4406-bf80-599762bfd0a5"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -153,78 +161,100 @@ public class @InputManager : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e2727f9f-d5f8-4f55-9090-2e174fc210ba"",
-                    ""path"": ""<Keyboard>/downArrow"",
+                    ""id"": ""274386e1-5a70-45e8-9dbd-3803e9c3c9b0"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Crawl"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""WASD"",
-                    ""id"": ""85534f04-61b7-490c-8617-7624d9657e38"",
+                    ""name"": """",
+                    ""id"": ""34791052-0b30-4c24-935a-9ca97d314e55"",
+                    ""path"": ""<Keyboard>/numpad5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Use Tool"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bd2ed037-7206-4c6c-b53f-088bf70c7be1"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Use Tool"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Numpad"",
+                    ""id"": ""3981e993-3af3-42ec-9c55-ea2dc069d898"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Climb"",
+                    ""action"": ""Cycle Tool"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""a9d2d0c8-deb1-47d3-bc5f-ce76e99f91e9"",
+                    ""path"": ""<Keyboard>/numpad4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Cycle Tool"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""2552510e-af87-4aa8-ba8d-f341603e1c81"",
+                    ""path"": ""<Keyboard>/numpad6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Cycle Tool"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""6476435a-332d-42f5-8a28-63336e9e8172"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Cycle Tool"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": ""up"",
-                    ""id"": ""86caa489-e4cf-4d10-922b-4fb80e362161"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""id"": ""943c99a1-4a1b-4925-bef5-e95a96ef3a39"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Climb"",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Cycle Tool"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""down"",
-                    ""id"": ""f18465d7-3d8f-4212-b5ca-9854429ac801"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""id"": ""9c706ff5-682f-4fce-b8cb-dcfc68af574c"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Climb"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Keypad"",
-                    ""id"": ""d729ea95-4d81-4bde-9d13-a4b5598f2d7a"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Climb"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""1d50b4c9-89af-48e2-b3f9-48c6a8c1f04e"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Climb"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""a25a6fa1-282e-48a1-adda-e73191eece8a"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Climb"",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Cycle Tool"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -246,22 +276,22 @@ public class @InputManager : IInputActionCollection, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""f0f35c2b-8ead-4448-b4db-7abf166303b5"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""id"": ""015f9a8a-47a2-4d89-90a2-08b08f08e727"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""015f9a8a-47a2-4d89-90a2-08b08f08e727"",
-                    ""path"": ""<Keyboard>/f"",
+                    ""id"": ""1ccc0ae0-c189-4e30-97c2-88fcfe317737"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -337,7 +367,8 @@ public class @InputManager : IInputActionCollection, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Crawl = m_Player.FindAction("Crawl", throwIfNotFound: true);
-        m_Player_Climb = m_Player.FindAction("Climb", throwIfNotFound: true);
+        m_Player_UseTool = m_Player.FindAction("Use Tool", throwIfNotFound: true);
+        m_Player_CycleTool = m_Player.FindAction("Cycle Tool", throwIfNotFound: true);
         // Environment
         m_Environment = asset.FindActionMap("Environment", throwIfNotFound: true);
         m_Environment_Interact = m_Environment.FindAction("Interact", throwIfNotFound: true);
@@ -393,7 +424,8 @@ public class @InputManager : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Crawl;
-    private readonly InputAction m_Player_Climb;
+    private readonly InputAction m_Player_UseTool;
+    private readonly InputAction m_Player_CycleTool;
     public struct PlayerActions
     {
         private @InputManager m_Wrapper;
@@ -401,7 +433,8 @@ public class @InputManager : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Crawl => m_Wrapper.m_Player_Crawl;
-        public InputAction @Climb => m_Wrapper.m_Player_Climb;
+        public InputAction @UseTool => m_Wrapper.m_Player_UseTool;
+        public InputAction @CycleTool => m_Wrapper.m_Player_CycleTool;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -420,9 +453,12 @@ public class @InputManager : IInputActionCollection, IDisposable
                 @Crawl.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrawl;
                 @Crawl.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrawl;
                 @Crawl.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrawl;
-                @Climb.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClimb;
-                @Climb.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClimb;
-                @Climb.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClimb;
+                @UseTool.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseTool;
+                @UseTool.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseTool;
+                @UseTool.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseTool;
+                @CycleTool.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCycleTool;
+                @CycleTool.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCycleTool;
+                @CycleTool.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCycleTool;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -436,9 +472,12 @@ public class @InputManager : IInputActionCollection, IDisposable
                 @Crawl.started += instance.OnCrawl;
                 @Crawl.performed += instance.OnCrawl;
                 @Crawl.canceled += instance.OnCrawl;
-                @Climb.started += instance.OnClimb;
-                @Climb.performed += instance.OnClimb;
-                @Climb.canceled += instance.OnClimb;
+                @UseTool.started += instance.OnUseTool;
+                @UseTool.performed += instance.OnUseTool;
+                @UseTool.canceled += instance.OnUseTool;
+                @CycleTool.started += instance.OnCycleTool;
+                @CycleTool.performed += instance.OnCycleTool;
+                @CycleTool.canceled += instance.OnCycleTool;
             }
         }
     }
@@ -526,7 +565,8 @@ public class @InputManager : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnCrawl(InputAction.CallbackContext context);
-        void OnClimb(InputAction.CallbackContext context);
+        void OnUseTool(InputAction.CallbackContext context);
+        void OnCycleTool(InputAction.CallbackContext context);
     }
     public interface IEnvironmentActions
     {

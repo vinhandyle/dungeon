@@ -27,9 +27,9 @@ public class LadderExit : TriggerZone
 
         if (pMovement.climbing)
         {
-            player.transform.position = new Vector3(exitPos.x, exitPos.y, player.transform.position.z);
-            pMovement.climbing = false;
+            pMovement.ResetMoveDirection();
             pMovement.SetClimbing(false);
+            player.transform.position = new Vector3(exitPos.x, exitPos.y, player.transform.position.z);            
         }
     }
 }

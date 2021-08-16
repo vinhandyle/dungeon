@@ -1,18 +1,24 @@
 ﻿using UnityEngine;
 
 /// <summary>
-/// Test projectile.
+/// Test enemy projectile.
 /// </summary>
-public class Bullet : Projectile
+public class Bullet : EnemyProjectile
 {
+    protected override void Awake()
+    {
+        base.Awake();
+
+        OnHitPlayer += (Collider2D collision) =>
+        {
+            playerHealth.TakeDamage(damage);
+            player.Knockback(knockbackAmount, knockbackDuration, knockbackType, gameObject);
+        };
+    }
+
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag(playerTag))
-        {
-            player = collision.gameObject.GetComponentInParent<PlayerHealth>();
-            player.TakeDamage(damage);
-        }
-
+        HitPlayer(collision);
         base.OnTriggerEnter2D(collision);
-    }
+    }   
 }
