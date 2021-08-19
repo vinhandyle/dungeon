@@ -13,7 +13,7 @@ public abstract class Item : MonoBehaviour
     /// </summary>
     protected abstract void SetUpItem();
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         SetUpItem();
     }

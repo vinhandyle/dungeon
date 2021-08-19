@@ -16,8 +16,11 @@ public abstract class EnemyMelee : Melee
     {
         OnHitPlayer += (Collider2D collision) =>
         {
-            player = collision.gameObject.GetComponentInParent<Player>();
-            playerHealth = player.GetComponent<PlayerHealth>();
+            if (player == null)
+            {
+                player = collision.gameObject.GetComponentInParent<Player>();
+                playerHealth = player.GetComponent<PlayerHealth>();
+            }         
         };
     }
 

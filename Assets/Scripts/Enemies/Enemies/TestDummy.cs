@@ -90,7 +90,9 @@ public class TestDummy : Enemy
             Vector2 direction = (player.transform.position - rotator.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             rotator.eulerAngles = Vector3.forward * angle;
-            Instantiate(bullet, shootPoint.position, shootPoint.rotation);
+
+            Bullet newBullet = Instantiate(bullet, shootPoint.position, shootPoint.rotation).GetComponent<Bullet>();
+            newBullet.SetOrigin(gameObject);
 
             shotsLeft--;
             moveInit = true;

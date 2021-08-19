@@ -46,9 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 892ad5d376b0fb3408da10b1b876abb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  origin: {fileID: 0}
   damage: 1
   speed: 5
-  knockbackAmount: 20
+  knockbackAmount: 2.5
   knockbackDuration: 0.5
   knockbackType: 0
   destroyOnHit: 1

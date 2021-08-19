@@ -2,17 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossHealth : MonoBehaviour
+/// <summary>
+/// Represents any boss's health.
+/// </summary>
+public class BossHealth : EnemyHealth
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void DeathEvent()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        throw new System.NotImplementedException();
     }
 }

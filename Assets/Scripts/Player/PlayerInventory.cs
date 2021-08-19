@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Represents the player's invenotry.
+/// </summary>
 public class PlayerInventory : MonoBehaviour
 {
     [Header("Tools")]

@@ -18,8 +18,11 @@ public abstract class EnemyProjectile : Projectile
 
         OnHitPlayer += (Collider2D collision) => 
         {
-            player = collision.gameObject.GetComponentInParent<Player>();
-            playerHealth = player.GetComponent<PlayerHealth>();
+            if (player == null)
+            {
+                player = collision.gameObject.GetComponentInParent<Player>();
+                playerHealth = player.GetComponent<PlayerHealth>();
+            }            
         };
     }
 

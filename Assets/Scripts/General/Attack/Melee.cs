@@ -4,20 +4,14 @@ using UnityEngine;
 /// <summary>
 /// Base class for all melee attacks.
 /// </summary>
-public abstract class Melee : MonoBehaviour
+public abstract class Melee : Attack
 {
     [Header("Generic Melee Info")]
-    [SerializeField] protected int damage = 0;
-
     [SerializeField] protected float knockbackAmount = 0;
     [SerializeField] protected float knockbackDuration = 0;
-    [SerializeField] protected int knockbackType = 0;
-
-    [SerializeField] protected bool parryable = true;
+    [SerializeField] protected int knockbackType = 0;   
 
     protected event Action OnHit = null;
-
-    [HideInInspector] public bool parried = false;
 
     protected abstract void OnTriggerEnter2D(Collider2D collision);    
 }

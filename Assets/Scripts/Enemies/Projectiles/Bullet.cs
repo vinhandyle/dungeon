@@ -12,7 +12,7 @@ public class Bullet : EnemyProjectile
         OnHitPlayer += (Collider2D collision) =>
         {
             playerHealth.TakeDamage(damage);
-            player.Knockback(knockbackAmount, knockbackDuration, knockbackType, gameObject);
+            player.Knockback(knockbackAmount, knockbackDuration, knockbackType, origin.transform.position);
         };
     }
 

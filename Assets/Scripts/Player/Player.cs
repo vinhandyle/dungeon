@@ -14,6 +14,19 @@ public class Player : Entity
     public PlayerInventory inventory = null;
 
     private float damageMultiplier = 1;
+    private bool usingTool = false;
+
+    private void Update()
+    {
+        if (usingTool)
+        {
+            UseTool();
+        }
+        else
+        {
+            ReleaseTool();
+        }
+    }
 
     /// <summary>
     /// Increases the player's health by 1.
@@ -24,16 +37,38 @@ public class Player : Entity
     }
 
     /// <summary>
-    /// Uses the tool currently held by the player.
+    /// Indicates whether the tool currently held should be used based on relevant input interactions.
     /// </summary>
     /// <param name="context">The input being read from the button interaction.</param>
     public void UseTool(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            inventory?.currentHeldTool?.Use();
-
+            usingTool = true;
         }
+        else if (context.canceled)
+        {
+            usingTool = false;
+        };
+    }
+
+    /// <summary>
+    /// Uses the tool currently held by the player.
+    /// </summary>
+    private void UseTool()
+    {
+        if (!GetComponent<PlayerMovement>().climbing)
+        {
+            inventory?.currentHeldTool?.Use();
+        }
+    }
+
+    /// <summary>
+    /// Releases the tool currently held by the player.
+    /// </summary>
+    private void ReleaseTool()
+    {
+        inventory?.currentHeldTool?.Release();
     }
 
     /// <summary>

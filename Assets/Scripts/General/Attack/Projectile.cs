@@ -4,10 +4,9 @@ using UnityEngine;
 /// <summary>
 /// Base class for all projectiles.
 /// </summary>
-public abstract class Projectile : MonoBehaviour
+public abstract class Projectile : Attack
 {
     [Header("Generic Projectile Info")]
-    [SerializeField] protected int damage = 0;
     [SerializeField] protected float speed = 0;
 
     [SerializeField] protected float knockbackAmount = 0;
@@ -31,10 +30,13 @@ public abstract class Projectile : MonoBehaviour
     /// </summary>
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (destroyOnHit)
+        bool isPlayerAttack = 
+            collision.GetComponent<PlayerMelee>() || collision.GetComponent<PlayerProjectile>();
+
+        if (destroyOnHit && !isPlayerAttack)
         {
             Destroy(gameObject);
             OnHit?.Invoke();
         }
-    }
+    }    
 }

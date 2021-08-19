@@ -84,32 +84,40 @@ public class PlayerMovement : MonoBehaviour
     /// </summary>
     private void Move()
     {
-        int xDir = 0;
-
-        if (moveDirection.x < 0)
-        {
-            xDir = -1;
-            facingLeft = true;
-        }
-        else if (moveDirection.x > 0)
-        {
-            xDir = 1;
-            facingLeft = false;
-        }
-
-        if ((xDir == -1 && !canMoveLeft) || (xDir == 1 && !canMoveRight))
-        {
-            xDir = 0;
-        }
-
-        sprite.flipX = facingLeft;
-
+        // While using a tool, the player cannot turn but they can still move in that direction
         if (!GetComponent<Player>().stunned)
         {
-            rb.velocity = new Vector2(
-            xDir * walkSpeed / (_crawling ? crawlReduction : 1),
-            rb.velocity.y);
-        }       
+            int xDir = 0;
+            bool usingTool = GetComponent<PlayerInventory>().currentHeldTool.inUse;
+
+            if (moveDirection.x < 0)
+            {
+                xDir = -1;
+                facingLeft = usingTool ? facingLeft : true;
+            }
+            else if (moveDirection.x > 0)
+            {
+                xDir = 1;
+                facingLeft = usingTool ? facingLeft : false;
+            }
+
+            if ((xDir == -1 && !canMoveLeft) || (xDir == 1 && !canMoveRight))
+            {
+                xDir = 0;
+            }
+
+            sprite.flipX = facingLeft;
+
+            rb.velocity =
+                new Vector2(
+                    xDir * walkSpeed / (_crawling ? crawlReduction : 1),
+                    rb.velocity.y
+                );
+        }
+        else
+        {
+            rb.velocity = new Vector2(_midair ? rb.velocity.x : 0, rb.velocity.y);
+        }
     }
 
     /// <summary>
@@ -141,8 +149,7 @@ public class PlayerMovement : MonoBehaviour
         {
             jumpInputted = true;
         }
-
-        if (context.canceled)
+        else if (context.canceled)
         {
             jumpInputted = false;
         }
@@ -194,8 +201,7 @@ public class PlayerMovement : MonoBehaviour
         {
             crawlInputted = true;
         }
-
-        if (context.canceled)
+        else if (context.canceled)
         {
             crawlInputted = false;
         }

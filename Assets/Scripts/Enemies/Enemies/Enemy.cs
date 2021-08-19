@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Base class for any enemy.
+/// </summary>
 public abstract class Enemy : Entity
 {   
     [Header("Generic Enemy Info")]

@@ -381,12 +381,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 661778e9d8b07e14e8a879482a13e355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  origin: {fileID: 1780818112}
   damage: 1
-  knockbackAmount: 10
-  knockbackDuration: 1
-  knockbackType: 1
+  stabilityDamage: 0
+  blockable: 1
   parryable: 1
   parried: 0
+  knockbackAmount: 12.5
+  knockbackDuration: 0.75
+  knockbackType: 1
   swingSpeed: 0
   swingingForward: 0
 --- !u!50 &143329167
@@ -1540,7 +1543,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1029724101}
   - component: {fileID: 1029724102}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Aggro Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1587,7 +1590,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1033298855}
   - component: {fileID: 1033298856}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Graphic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1872,7 +1875,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1217660087}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Shoot Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2043,7 +2046,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1388970575}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Rotator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2918,7 +2921,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1780818112}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -2962,6 +2965,7 @@ MonoBehaviour:
   _health: 1
   _maxHealth: 0
   defense: 0
+  isBoss: 0
   damageFlashDelta: 25
   damageFlashTime: 0.1
 --- !u!114 &1780818117
@@ -3627,6 +3631,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 62833229936131996, guid: 67aea2a83fed8b54284426cbfa1bd968,
+        type: 3}
+      propertyPath: maxStability
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 62833229936131996, guid: 67aea2a83fed8b54284426cbfa1bd968,
+        type: 3}
+      propertyPath: stunDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1522761932171955899, guid: 67aea2a83fed8b54284426cbfa1bd968,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 2578806578670069328, guid: 67aea2a83fed8b54284426cbfa1bd968,
         type: 3}
       propertyPath: inventory
@@ -3685,12 +3704,12 @@ PrefabInstance:
     - target: {fileID: 2578806578670069332, guid: 67aea2a83fed8b54284426cbfa1bd968,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 2578806578670069332, guid: 67aea2a83fed8b54284426cbfa1bd968,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.3
       objectReference: {fileID: 0}
     - target: {fileID: 2578806578670069332, guid: 67aea2a83fed8b54284426cbfa1bd968,
         type: 3}
@@ -3741,6 +3760,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2578806578670069335, guid: 67aea2a83fed8b54284426cbfa1bd968,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6251144732538388325, guid: 67aea2a83fed8b54284426cbfa1bd968,
+        type: 3}
+      propertyPath: useSpeed
+      value: 0.015
       objectReference: {fileID: 0}
     - target: {fileID: 7804167312762040220, guid: 67aea2a83fed8b54284426cbfa1bd968,
         type: 3}

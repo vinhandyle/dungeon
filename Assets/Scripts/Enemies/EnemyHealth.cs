@@ -1,11 +1,17 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Represents any enemy's health.
+/// </summary>
 public class EnemyHealth : Health
 {
-    [SerializeField] private int damageFlashDelta = 0;
-    [SerializeField] private float damageFlashTime = 0;
-    private Color initialColor = new Color();
+    [SerializeField] protected bool isBoss = false;
+
+    [Header("Indication of being Hit")]
+    [SerializeField] protected int damageFlashDelta = 0;
+    [SerializeField] protected float damageFlashTime = 0;
+    protected Color initialColor = new Color();
 
     private void Awake()
     {
@@ -23,7 +29,7 @@ public class EnemyHealth : Health
 
     }
 
-    private void SetBrightness(int delta)
+    protected void SetBrightness(int delta)
     {
         Material material = transform.Find("Graphic").GetComponent<SpriteRenderer>().material;
         Color newColor = new Color(
@@ -33,7 +39,7 @@ public class EnemyHealth : Health
         material.SetColor("_Color", newColor);
     }
 
-    private void ResetBrightness()
+    protected void ResetBrightness()
     {
         Material material = transform.Find("Graphic").GetComponent<SpriteRenderer>().material;
         material.SetColor("_Color", initialColor);

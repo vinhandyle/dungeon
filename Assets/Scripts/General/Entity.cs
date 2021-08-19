@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Base class for objects that can attack or be attacked.
 /// </summary>
-public class Entity : MonoBehaviour
+public abstract class Entity : MonoBehaviour
 {
     [Header("Stats")]
     [SerializeField] protected float knockbackResistance;
@@ -20,11 +20,11 @@ public class Entity : MonoBehaviour
     /// <param name="duration">How long before the object can recover.</param>
     /// <param name="type"><para>How knockback should be applied. </para>
     ///                     0 = omni-directional, 1 = horizontal only, 2 = vertical only.</param>
-    /// <param name="origin">The epicenter of the knockback.</param>
-    public virtual void Knockback(float amount, float duration, int type, GameObject origin)
+    /// <param name="origin">The location of the knockback epicenter.</param>
+    public virtual void Knockback(float amount, float duration, int type, Vector3 origin)
     {
         float netAmount = amount * (1 - knockbackResistance);
-        Vector2 difference = (transform.position - origin.transform.position).normalized;
+        Vector2 difference = (transform.position - origin).normalized;
 
         StartCoroutine(Stun(duration));
 
@@ -47,9 +47,9 @@ public class Entity : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Inflicts the stunned effect on this entity for the given duration.
     /// </summary>
-    /// <param name="duration"></param>
+    /// <param name="duration">How long the stun will last.</param>
     IEnumerator Stun(float duration)
     {
         stunned = true;
