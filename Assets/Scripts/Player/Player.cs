@@ -9,6 +9,7 @@ using UnityEngine.InputSystem;
 public class Player : Entity
 {
     [Header("Components")]
+    [SerializeField] private Animator anim;
     [SerializeField] private PlayerHealth health = null;
 
     public PlayerInventory inventory = null;
@@ -57,7 +58,7 @@ public class Player : Entity
     /// </summary>
     private void UseTool()
     {
-        if (!GetComponent<PlayerMovement>().climbing)
+        if (!anim.GetBool("Climbing"))
         {
             inventory?.currentHeldTool?.Use();
         }

@@ -43,6 +43,30 @@ public class @InputManager : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""Light Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""4bc8303c-60ff-4c42-a4ab-49900b593133"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Heavy Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""65ffc4fe-a8e8-495e-a7fc-e740c6c3cdaf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Block"",
+                    ""type"": ""Button"",
+                    ""id"": ""d6485061-b85d-4f55-9784-6df38f816549"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""Use Tool"",
                     ""type"": ""Button"",
                     ""id"": ""9c5dace9-78f4-45e2-967b-f3de0acadf6d"",
@@ -123,50 +147,6 @@ public class @InputManager : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""7e52f256-cb56-4484-980e-e3c10a870738"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""bafd525f-f651-4406-bf80-599762bfd0a5"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""893c1226-b2bf-472a-9344-b38dc16bc6ec"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Crawl"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""274386e1-5a70-45e8-9dbd-3803e9c3c9b0"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Crawl"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -257,6 +237,83 @@ public class @InputManager : IInputActionCollection, IDisposable
                     ""action"": ""Cycle Tool"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dfbc970d-752d-4882-b7cb-2ca3cff1e421"",
+                    ""path"": ""<Keyboard>/numpad7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Light Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9b646f4f-730e-4631-8adc-2911e791910c"",
+                    ""path"": ""<Keyboard>/numpad8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Heavy Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d87d5bdf-5b82-46fd-937d-686775b43570"",
+                    ""path"": ""<Keyboard>/numpad9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Block"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""893c1226-b2bf-472a-9344-b38dc16bc6ec"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Crawl"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""274386e1-5a70-45e8-9dbd-3803e9c3c9b0"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Crawl"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7e52f256-cb56-4484-980e-e3c10a870738"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bafd525f-f651-4406-bf80-599762bfd0a5"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -367,6 +424,9 @@ public class @InputManager : IInputActionCollection, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Crawl = m_Player.FindAction("Crawl", throwIfNotFound: true);
+        m_Player_LightAttack = m_Player.FindAction("Light Attack", throwIfNotFound: true);
+        m_Player_HeavyAttack = m_Player.FindAction("Heavy Attack", throwIfNotFound: true);
+        m_Player_Block = m_Player.FindAction("Block", throwIfNotFound: true);
         m_Player_UseTool = m_Player.FindAction("Use Tool", throwIfNotFound: true);
         m_Player_CycleTool = m_Player.FindAction("Cycle Tool", throwIfNotFound: true);
         // Environment
@@ -424,6 +484,9 @@ public class @InputManager : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Crawl;
+    private readonly InputAction m_Player_LightAttack;
+    private readonly InputAction m_Player_HeavyAttack;
+    private readonly InputAction m_Player_Block;
     private readonly InputAction m_Player_UseTool;
     private readonly InputAction m_Player_CycleTool;
     public struct PlayerActions
@@ -433,6 +496,9 @@ public class @InputManager : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Crawl => m_Wrapper.m_Player_Crawl;
+        public InputAction @LightAttack => m_Wrapper.m_Player_LightAttack;
+        public InputAction @HeavyAttack => m_Wrapper.m_Player_HeavyAttack;
+        public InputAction @Block => m_Wrapper.m_Player_Block;
         public InputAction @UseTool => m_Wrapper.m_Player_UseTool;
         public InputAction @CycleTool => m_Wrapper.m_Player_CycleTool;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -453,6 +519,15 @@ public class @InputManager : IInputActionCollection, IDisposable
                 @Crawl.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrawl;
                 @Crawl.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrawl;
                 @Crawl.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrawl;
+                @LightAttack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLightAttack;
+                @LightAttack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLightAttack;
+                @LightAttack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLightAttack;
+                @HeavyAttack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeavyAttack;
+                @HeavyAttack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeavyAttack;
+                @HeavyAttack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnHeavyAttack;
+                @Block.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBlock;
+                @Block.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBlock;
+                @Block.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnBlock;
                 @UseTool.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseTool;
                 @UseTool.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseTool;
                 @UseTool.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUseTool;
@@ -472,6 +547,15 @@ public class @InputManager : IInputActionCollection, IDisposable
                 @Crawl.started += instance.OnCrawl;
                 @Crawl.performed += instance.OnCrawl;
                 @Crawl.canceled += instance.OnCrawl;
+                @LightAttack.started += instance.OnLightAttack;
+                @LightAttack.performed += instance.OnLightAttack;
+                @LightAttack.canceled += instance.OnLightAttack;
+                @HeavyAttack.started += instance.OnHeavyAttack;
+                @HeavyAttack.performed += instance.OnHeavyAttack;
+                @HeavyAttack.canceled += instance.OnHeavyAttack;
+                @Block.started += instance.OnBlock;
+                @Block.performed += instance.OnBlock;
+                @Block.canceled += instance.OnBlock;
                 @UseTool.started += instance.OnUseTool;
                 @UseTool.performed += instance.OnUseTool;
                 @UseTool.canceled += instance.OnUseTool;
@@ -565,6 +649,9 @@ public class @InputManager : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnCrawl(InputAction.CallbackContext context);
+        void OnLightAttack(InputAction.CallbackContext context);
+        void OnHeavyAttack(InputAction.CallbackContext context);
+        void OnBlock(InputAction.CallbackContext context);
         void OnUseTool(InputAction.CallbackContext context);
         void OnCycleTool(InputAction.CallbackContext context);
     }

@@ -1,17 +1,71 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
-/// Base class for all melee attacks.
+/// Use for all melee attacks.
 /// </summary>
-public abstract class Melee : Attack
+public class Melee : Attack
 {
-    [Header("Generic Melee Info")]
-    [SerializeField] protected float knockbackAmount = 0;
-    [SerializeField] protected float knockbackDuration = 0;
-    [SerializeField] protected int knockbackType = 0;   
+    private BoxCollider2D hitbox;
+    private SpriteRenderer spriteRenderer;
+    [SerializeField] private List<string> targetTags;
 
-    protected event Action OnHit = null;
+    [Header("Attack Phase Visualizer")]
+    [SerializeField] private List<Sprite> sprites;
 
-    protected abstract void OnTriggerEnter2D(Collider2D collision);    
+    public bool inProcess;
+
+    private void Awake()
+    {
+        hitbox = GetComponent<BoxCollider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        hitbox.enabled = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (targetTags.Any(tag => collision.CompareTag(tag)))
+        {
+            Health target = collision.GetComponent<Health>();
+            target.TakeDamage(damage);
+            GetComponentInParent<Health>().Heal(healAmt);
+        }
+    }
+
+    /// <summary>
+    /// The segment before the attack lands.
+    /// </summary>
+    public void Foreswing()
+    {
+        inProcess = true;
+        //spriteRenderer.sprite = sprites[0]; // Comment out if not testing
+    }
+
+    /// <summary>
+    /// The segment during which the attack deals damage.
+    /// </summary>
+    public void Hit()
+    {
+        hitbox.enabled = true;
+        //spriteRenderer.sprite = sprites[1]; // Comment out if not testing
+    }
+
+    /// <summary>
+    /// The segment after the attack but before control is returned to the player.
+    /// </summary>
+    public void Backswing()
+    {
+        hitbox.enabled = false;
+        //spriteRenderer.sprite = sprites[2]; // Comment out if not testing
+    }
+
+    /// <summary>
+    /// Return control back to the player.
+    /// </summary>
+    public void Finish()
+    {
+        spriteRenderer.sprite = null;
+        inProcess = false;
+    }
 }

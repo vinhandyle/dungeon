@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -6,37 +7,63 @@ using UnityEngine;
 /// </summary>
 public abstract class Projectile : Attack
 {
-    [Header("Generic Projectile Info")]
-    [SerializeField] protected float speed = 0;
+    [SerializeField] protected bool destroyOnHit;
 
-    [SerializeField] protected float knockbackAmount = 0;
-    [SerializeField] protected float knockbackDuration = 0;
-    [SerializeField] protected int knockbackType = 0;
-
-    [SerializeField] protected bool destroyOnHit = false;
-
-    protected event Action OnHit = null;
-
-    /// <summary>
-    /// Performs any setup needed when the projectile is created.
-    /// </summary>
-    protected virtual void Awake()
+    [Header("Timers")]
+    [Tooltip("Total time this projectile has spent alive. Do not jump or reset.")]
+    [SerializeField] protected float lifetime;
+    [Tooltip("List of all timers used in AI. Can jump or reset.")]
+    [SerializeField] protected List<float> aiTimers;
+ 
+    protected virtual void Update()
     {
-        gameObject.GetComponent<Rigidbody2D>().velocity = transform.right * speed;
+        lifetime += Time.deltaTime;
+        aiTimers.ForEach(timer => timer += Time.deltaTime);
+
+        AI();
     }
 
     /// <summary>
-    /// Performs any cleanup or triggers any after-effects when the projectile collides with something.
+    /// Defines the projectile's behavior.
     /// </summary>
+    protected abstract void AI();
+
+    /// <summary>
+    /// Points the projectile towards the target.
+    /// </summary>
+    protected void PointToTarget(Transform target)
+    {
+        Vector2 direction = Vector2.zero;
+        direction = (target.position - transform.position).normalized;
+
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.eulerAngles = Vector3.forward * angle;
+    }
+
+    /// <summary>
+    /// Defines the projectile's behavior after it hits the player.
+    /// </summary>
+    protected virtual void OnHitPlayerEvent(GameObject player)
+    {
+        Debug.Log(gameObject.name + " hit " + player.name);
+    }
+
+    /// <summary>
+    /// Defines the projectile's behavior after it hits terrain.
+    /// </summary>
+    protected virtual void OnHitTerrainEvent(GameObject terrain)
+    {
+        Debug.Log(gameObject.name + " hit " + terrain.name);
+    }
+
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        bool isPlayerAttack = 
-            collision.GetComponent<PlayerMelee>() || collision.GetComponent<PlayerProjectile>();
-
-        if (destroyOnHit && !isPlayerAttack)
+        if (collision.CompareTag("Player"))
         {
-            Destroy(gameObject);
-            OnHit?.Invoke();
+            OnHitPlayerEvent(collision.gameObject);
         }
-    }    
+        // TODO: Add terrain collision case
+
+        if (destroyOnHit) Destroy(gameObject);
+    }
 }

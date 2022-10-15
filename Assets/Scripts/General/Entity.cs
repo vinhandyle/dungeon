@@ -14,6 +14,16 @@ public abstract class Entity : MonoBehaviour
     public bool stunned;
 
     /// <summary>
+    /// Flips the entity across the y-axis;
+    /// </summary>
+    public virtual void Flip()
+    {
+        Vector3 oppDirection = transform.localScale;
+        oppDirection.x *= -1;
+        transform.localScale = oppDirection;
+    }
+
+    /// <summary>
     /// Moves the object by the given amount in a certain way relative to the given origin.
     /// </summary>
     /// <param name="amount">How much the object will be pushed from the origin.</param>

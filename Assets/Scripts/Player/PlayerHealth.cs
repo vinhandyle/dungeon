@@ -5,38 +5,34 @@
 /// </summary>
 public class PlayerHealth : Health
 {
-    [SerializeField] private PlayerHealthUI ui = null;
-
     [SerializeField] private int _usableHealth = 0;
     /// <summary>
     /// How much of the maximum health is usable.
     /// </summary>
     public int usableHealth { get { return _usableHealth; } }
 
-    [Header("Debug Tools")]
-    [SerializeField] private bool invincible = false;
+    [HideInInspector] public Respawner respawnPoint;
 
-    [HideInInspector] public Respawner respawnPoint = null;
-
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _usableHealth = _maxHealth;
-        ui.UpdateHealthUI();
     }
 
-    protected override void DamageTakenEvent()
+    protected override void OnDamageTakenEvent()
     {
-        if (invincible)
-            FullHeal();
+        StartCoroutine(DamageFlash());
 
-        ui.UpdateHealthUI();
+        if (invincible) FullHeal();
     }
 
-    protected override void DeathEvent()
+    protected override void OnDeathEvent()
     {
         respawnPoint.RespawnPlayer(this);
         FullHeal();
     }
+
+    #region Recover Health
 
     /// <summary>
     /// Restores the given amount of health, adjusted to not exceed the maximum usable health.
@@ -44,7 +40,6 @@ public class PlayerHealth : Health
     public override void Heal(int amount)
     {
         _health += _health + amount > _usableHealth ? _usableHealth - _health : amount;
-        ui.UpdateHealthUI();
     }
 
     /// <summary>
@@ -53,7 +48,6 @@ public class PlayerHealth : Health
     public override void FullHeal()
     {
         _health = _usableHealth;
-        ui.UpdateHealthUI();
     }
 
     /// <summary>
@@ -62,6 +56,7 @@ public class PlayerHealth : Health
     public void ResetUsableHealth()
     {
         _usableHealth = _maxHealth;
-        ui.UpdateHealthUI();
     }
+
+    #endregion
 }

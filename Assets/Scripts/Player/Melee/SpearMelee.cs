@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 public class SpearMelee : PlayerMelee
 {
-    [SerializeField] private bool onFire = false;
+   /* [SerializeField] private bool onFire = false;
 
     private void Awake()
     {
@@ -26,5 +26,5 @@ public class SpearMelee : PlayerMelee
         HitEnemy(collision);
 
         // Add interaction when hitting fire
-    }   
+    }   */
 }
